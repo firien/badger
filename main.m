@@ -3,7 +3,7 @@
 //  badger
 //
 //  Created by Patrick Griffin on 8/16/10.
-//  Copyright 2010 unnamedmundane. All rights reserved.
+//  Copyright 2010 unnamedmundane.com All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

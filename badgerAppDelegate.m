@@ -3,7 +3,7 @@
 //  badger
 //
 //  Created by Patrick Griffin on 8/16/10.
-//  Copyright 2010 unnamedmundane. All rights reserved.
+//  Copyright 2010 unnamedmundane.com. All rights reserved.
 //
 
 #import "badgerAppDelegate.h"
@@ -15,7 +15,7 @@
 @implementation badgerAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-   statusMenu = [[NSMenu alloc] initWithTitle:@"Badger"];
+  statusMenu = [[NSMenu alloc] initWithTitle:@"Badger"];
   statusMenu.delegate = self;
   statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
   [statusItem setMenu:statusMenu];
@@ -23,6 +23,12 @@
   [statusItem setHighlightMode:YES];
 
   NSMenuItem *newItem;
+
+  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Number" action:NULL keyEquivalent:@""];
+  [newItem setEnabled:NO];
+  [statusMenu addItem:newItem];
+  [newItem release];
+
   int counter = 1;
   while (counter < 11) {
     NSString *title = [NSString stringWithFormat:@"%d", counter];
@@ -38,7 +44,13 @@
   [statusMenu addItem:separatorItem];
 
   //colors
+  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Color" action:NULL keyEquivalent:@""];
+  [newItem setEnabled:NO];
+  [statusMenu addItem:newItem];
+  [newItem release];
+
   selectedColor = @"Red";
+  [statusMenu setAutoenablesItems:NO];
   NSArray *colors = [[NSArray alloc] initWithObjects:@"Red", @"Blue", @"Green", @"Black", nil];
   for (NSString *title in colors) {
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:title action:NULL keyEquivalent:@""];
@@ -56,6 +68,12 @@
   [statusMenu addItem:separatorItem];
 
   //sizes
+
+  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Size" action:NULL keyEquivalent:@""];
+  [newItem setEnabled:NO];
+  [statusMenu addItem:newItem];
+  [newItem release];
+
   size = 32;
   int sizes = 16;
   while (sizes < 130) {
@@ -133,7 +151,7 @@
     // create the start and end points for the gradient vector (straight down)
     CGContextSaveGState(context);
     //shadow
-    CGFloat shadowColorValues[4] = {0, 0, 0, 0.9};
+    CGFloat shadowColorValues[4] = {0.4, 0.4, 0.4, 0.9};
     CGColorRef shadowColor = CGColorCreate(colorSpace, shadowColorValues);
     CGContextSetShadowWithColor(context, CGSizeMake(0.0, 0.0), floor(pixelsHigh / 9), shadowColor);
     CGContextSetLineWidth(context, lineWidth);
@@ -145,7 +163,7 @@
     CGContextBeginPath(context);
     CGContextAddEllipseInRect(context, circle);
     CGContextClip(context);
-    //fill with seleceted color
+    //fill with selected color
     NSArray *colorArray = [self colorArray];
     CGContextSetRGBFillColor(context, [[colorArray objectAtIndex:0] floatValue], [[colorArray objectAtIndex:1] floatValue], [[colorArray objectAtIndex:2] floatValue], 1.0);
     CGContextFillRect(context, CGRectMake(0,0, pixelsWide, pixelsHigh));
