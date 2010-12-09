@@ -1,0 +1,6 @@
+##Badger
+
+Creates numbered badges, similar to the badges on iOS devices, and places the image on the clipboard. The application runs as an agent (no dock icon) and lives in the top menubar. From the menubar the user can select and color, size, and number.
+
+I seem to be the resident goto guy for computer problems and wanted a quick and easy way to annotate screenshots.
+
