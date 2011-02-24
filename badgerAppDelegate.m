@@ -10,6 +10,8 @@
 
 @interface badgerAppDelegate (Private)
 - (NSArray *)colorArray;
+- (NSString *)promptForCharacter;
+- (void)generateBadge:(NSString *)title;
 @end
 
 @implementation badgerAppDelegate
@@ -34,7 +36,7 @@
     NSString *title = [NSString stringWithFormat:@"%d", counter];
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:title action:NULL keyEquivalent:@""];
     [newItem setTarget:self];
-    [newItem setAction:@selector(generateBadge:)];
+    [newItem setAction:@selector(getItemTitle:)];
     [statusMenu addItem:newItem];
     [newItem release];
     counter++;
@@ -88,6 +90,17 @@
     [newItem release];
     sizes = sizes * 2;
   }
+
+  separatorItem = [NSMenuItem separatorItem];
+  [statusMenu addItem:separatorItem];
+
+  //custom char
+  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Custom…" action:NULL keyEquivalent:@""];
+  [newItem setTarget:self];
+  [newItem setAction:@selector(customCharacter)];
+  [statusMenu addItem:newItem];
+  [newItem release];
+
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -111,12 +124,16 @@
   selectedColor = [sender title];
 }
 
-- (void)generateBadge:(id)sender {
+- (void)getItemTitle:(id)sender {
+  [self generateBadge:[sender title]];
+}
+
+- (void)generateBadge:(NSString *)title {
   // insert code here...
   int pixelsWide = size;
   int pixelsHigh = size;
 
-  const char *step = [[sender title] cStringUsingEncoding:NSUTF8StringEncoding];
+  const char *step = [title cStringUsingEncoding:NSUTF8StringEncoding];
   
   int bitmapBytesPerRow = (pixelsWide * 4);
   
@@ -191,7 +208,7 @@
     CGPoint endText = CGContextGetTextPosition(context);
     
     CGContextSetTextDrawingMode(context, kCGTextFill);
-    CGContextShowTextAtPoint(context, (pixelsWide / 2) - ((endText.x - startText.x) / 2), floor(pixelsHigh / 3.5), step, strlen(step));
+    CGContextShowTextAtPoint(context, (pixelsWide / 2.f) - ((endText.x - startText.x) / 2.f), floor(pixelsHigh / 3.5), step, strlen(step));
     
     // clean up the gradient
     CGGradientRelease(gradient);
@@ -235,4 +252,36 @@
 - (void)menu:(NSMenu *)menu willHighlightItem:(NSMenuItem *)item {
 
 }
+
+#pragma mark Alert
+- (void)customCharacter {
+  NSString *customChar = [self promptForCharacter];
+  if (customChar != nil)
+    [self generateBadge:customChar];
+}
+
+- (NSString *)promptForCharacter {
+  NSAlert *alert = [NSAlert alertWithMessageText:@"Enter a Character" defaultButton:@"OK"
+      alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@""];
+
+  NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];
+  [alert setAccessoryView:input];
+  //[input becomeFirstResponder];
+  [alert.window makeFirstResponder:input];
+  [[input currentEditor] setSelectedRange:NSMakeRange(0,0)];
+  NSInteger button = [alert runModal];
+  NSString *inputString;
+  if (button == NSAlertDefaultReturn) {
+    [input validateEditing];
+    inputString = [[input stringValue] copy];
+  } else if (button == NSAlertAlternateReturn) {
+    inputString = nil;
+  } else {
+    NSAssert1(NO, @"Invalid input dialog button %d", button);
+    inputString = nil;
+  }
+  [input release];
+  return [inputString autorelease];
+}
+
 @end
