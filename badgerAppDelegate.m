@@ -42,6 +42,13 @@
     counter++;
   }
 
+  //custom char
+  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Custom…" action:NULL keyEquivalent:@""];
+  [newItem setTarget:self];
+  [newItem setAction:@selector(customCharacter)];
+  [statusMenu addItem:newItem];
+  [newItem release];
+
   NSMenuItem *separatorItem = [NSMenuItem separatorItem];
   [statusMenu addItem:separatorItem];
 
@@ -90,16 +97,6 @@
     [newItem release];
     sizes = sizes * 2;
   }
-
-  separatorItem = [NSMenuItem separatorItem];
-  [statusMenu addItem:separatorItem];
-
-  //custom char
-  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Custom…" action:NULL keyEquivalent:@""];
-  [newItem setTarget:self];
-  [newItem setAction:@selector(customCharacter)];
-  [statusMenu addItem:newItem];
-  [newItem release];
 
   separatorItem = [NSMenuItem separatorItem];
   [statusMenu addItem:separatorItem];
