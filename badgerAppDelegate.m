@@ -76,7 +76,7 @@
   [statusMenu addItem:newItem];
   [newItem release];
 
-  size = 32;
+  size = 32;//default to 32
   int sizes = 16;
   while (sizes < 130) {
     NSString *title = [NSString stringWithFormat:@"%d", sizes];
