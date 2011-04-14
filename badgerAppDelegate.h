@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface badgerAppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
+@interface badgerAppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem *statusItem;
   NSString     *selectedColor;
   NSMenu       *statusMenu;

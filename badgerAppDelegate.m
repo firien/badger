@@ -18,7 +18,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   statusMenu = [[NSMenu alloc] initWithTitle:@"Badger"];
-  statusMenu.delegate = self;
   statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
   [statusItem setMenu:statusMenu];
   [statusItem setImage:[NSImage imageNamed:@"badge"]];
@@ -247,11 +246,6 @@
   NSString *path = [[NSBundle mainBundle] pathForResource:@"colors" ofType:@"plist"];
   NSDictionary *colors = [NSDictionary dictionaryWithContentsOfFile:path];
   return [colors valueForKey:selectedColor];
-}
-
-#pragma mark NSMenuDelegate
-- (void)menu:(NSMenu *)menu willHighlightItem:(NSMenuItem *)item {
-
 }
 
 #pragma mark Alert
