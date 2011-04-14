@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		1E0E3541135671A700EEE91F /* badge_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0E3540135671A700EEE91F /* badge_alt.png */; };
 		1E49655E121BA10C00140E23 /* badger.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1E49655D121BA10C00140E23 /* badger.icns */; };
 		1E9B2D86121B9184009DEC67 /* colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E9B2D85121B9184009DEC67 /* colors.plist */; };
 		1EBAFBA7121A195F00E47006 /* badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBAFBA6121A195F00E47006 /* badge.png */; };
@@ -22,6 +23,7 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1E0E3540135671A700EEE91F /* badge_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badge_alt.png; sourceTree = "<group>"; };
 		1E49655D121BA10C00140E23 /* badger.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = badger.icns; sourceTree = "<group>"; };
 		1E9B2D85121B9184009DEC67 /* colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors.plist; sourceTree = "<group>"; };
 		1EBAFBA6121A195F00E47006 /* badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badge.png; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		29B97314FDCFA39411CA2CEA /* badger */ = {
 			isa = PBXGroup;
 			children = (
+				1E0E3540135671A700EEE91F /* badge_alt.png */,
 				1E49655D121BA10C00140E23 /* badger.icns */,
 				1EBAFBA6121A195F00E47006 /* badge.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -180,6 +183,7 @@
 				1EBAFBA7121A195F00E47006 /* badge.png in Resources */,
 				1E9B2D86121B9184009DEC67 /* colors.plist in Resources */,
 				1E49655E121BA10C00140E23 /* badger.icns in Resources */,
+				1E0E3541135671A700EEE91F /* badge_alt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
