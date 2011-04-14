@@ -101,11 +101,25 @@
   [statusMenu addItem:newItem];
   [newItem release];
 
+  separatorItem = [NSMenuItem separatorItem];
+  [statusMenu addItem:separatorItem];
+
+  //quit
+  newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Quit" action:NULL keyEquivalent:@""];
+  [newItem setTarget:self];
+  [newItem setAction:@selector(quitApp:)];
+  [statusMenu addItem:newItem];
+  [newItem release];
+
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
   [statusMenu release];
   [statusItem release];
+}
+
+- (void)quitApp:(id)sender {
+  [NSApp terminate:sender];
 }
 
 - (void)setSize:(id)sender {
