@@ -22,6 +22,7 @@
   statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
   [statusItem setMenu:statusMenu];
   [statusItem setImage:[NSImage imageNamed:@"badge"]];
+  [statusItem setAlternateImage:[NSImage imageNamed:@"badge_alt"]];
   [statusItem setHighlightMode:YES];
 
   NSMenuItem *newItem;
