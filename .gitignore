@@ -5,5 +5,8 @@ build/
 *.perspectivev3
 *.mode1v3
 *.mode2v3
-
+#xcode 4.2
+project.xcworkspace/
+xcuserdata/
+#mac osx
 .DS_Store
